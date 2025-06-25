@@ -1,4 +1,3 @@
-import * as nn from './nn'
 import { cleanDomain } from './util'
 import { getStorage, setStorage, addToBlocked, addToWhitelist, removeFromBlocked } from './storage'
 import setupContextMenus from './context_menus'
@@ -54,8 +53,6 @@ function firstTimeSetup(): void {
     intentList: intentList,
     whitelistTime: 5,
     numIntentEntries: 20,
-    predictionThreshold: 0.5,
-    minIntentLength: 3,
     customMessage: '',
     enableBlobs: true,
     enable3D: true,
@@ -148,9 +145,6 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 // load context menus
 setupContextMenus()
 
-// Load ML model
-const model: nn.IntentClassifier = new nn.IntentClassifier('acc85.95')
-
 // Listen for new signals from non-background scripts
 chrome.runtime.onConnect.addListener((port) => {
   // check comm channel
@@ -172,30 +166,17 @@ chrome.runtime.onConnect.addListener((port) => {
   }
 })
 
-// handle content script intent submission
+// handle content script intent submission - now always allows access
 async function intentHandler(port: chrome.runtime.Port, msg) {
-  // extract intent and url from message
+  // extract intent from message
   const intent: string = msg.intent
 
   // get whitelist period
   getStorage().then(async (storage) => {
     const WHITELIST_PERIOD: number = storage.whitelistTime
-    const words: string[] = intent.split(' ')
 
-    if (words.length <= (storage.minIntentLength ?? 3)) {
-      // if too short, let content script know and early return
-      port.postMessage({ status: 'too_short' })
-      return
-    }
-
-    // send to nlp model for prediction
-    const valid: boolean = await model.predict(intent)
-    if (!valid) {
-      // if invalid, let content script know and early return
-      port.postMessage({ status: 'invalid' })
-      console.log('Failed. Remaining on page.')
-      return
-    }
+    // Always allow access - no more NLP checking
+    console.log(`Intent received: "${intent}" - Access granted!`)
 
     // add whitelist period for site
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

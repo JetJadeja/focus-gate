@@ -5,3 +5,5 @@ node_modules
 web-ext-artifacts
 .idea
 .vscode
+
+dist

@@ -1,12 +1,12 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "sourceMap": false,
-        "types": ["@types/chrome", "node", "@types/jquery", "@types/jqueryui"],
-        "typeRoots": ["node_modules/@types"],
-        "moduleResolution": "node",
-        "lib": ["es2017", "dom"],
-        "skipLibCheck": true,
-        "outDir": "build",
-    }
+  "compilerOptions": {
+    "target": "es6",
+    "sourceMap": false,
+    "types": ["chrome", "node", "jquery", "jqueryui"],
+    "typeRoots": ["node_modules/@types"],
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "outDir": "build"
+  }
 }

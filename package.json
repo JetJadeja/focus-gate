@@ -1,45 +1,46 @@
 {
-    "name": "reflect",
-    "version": "1.4.0",
-    "description": "",
-    "main": "blocker/background.js",
-    "dependencies": {
-        "@types/chrome": "^0.0.268",
-        "@types/jquery": "^3.5.29",
-        "@types/jqueryui": "^1.12.20",
-        "esbuild": "^0.25.5",
-        "typescript": "^5.4.5"
-    },
-    "scripts": {
-        "copy": "cp build/*.js dist/src/",
-        "build": "tsc && npm run copy && npm run esbuild",
-        "esbuild": "esbuild build/background.js build/content.js build/popup.js build/options.js --sourcemap --bundle --outdir=dist/src",
-        "watch": "nodemon -e ts -x \"npm run build\"",
-        "clean": "rm dist/src/*"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.24.5",
-        "@babel/preset-env": "^7.24.5",
-        "clang-format": "^1.8.0",
-        "husky": "^9.0.11",
-        "nodemon": "^3.1.0",
-        "parcel": "^2.12.0",
-        "prettier": "^3.2.5",
-        "pretty-quick": "^4.0.0"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "pretty-quick --staged --pattern '**/*.ts'"
-        }
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/getreflect/reflect-chrome.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/getreflect/reflect-chrome/issues"
-    },
-    "homepage": "https://github.com/getreflect/reflect-chrome#readme"
+  "name": "reflect",
+  "version": "1.4.0",
+  "description": "",
+  "main": "blocker/background.js",
+  "dependencies": {
+    "esbuild": "^0.25.5",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "copy": "cp build/*.js dist/src/",
+    "build": "tsc && npm run copy && npm run esbuild",
+    "esbuild": "esbuild build/background.js build/content.js build/popup.js build/options.js --sourcemap --bundle --outdir=dist/src",
+    "watch": "nodemon -e ts -x \"npm run build\"",
+    "clean": "rm dist/src/*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@types/chrome": "^0.0.268",
+    "@types/jquery": "^3.5.29",
+    "@types/jqueryui": "^1.12.20",
+    "@types/node": "^22.10.2",
+    "clang-format": "^1.8.0",
+    "husky": "^9.0.11",
+    "nodemon": "^3.1.0",
+    "parcel": "^2.12.0",
+    "prettier": "^3.2.5",
+    "pretty-quick": "^4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern '**/*.ts'"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getreflect/reflect-chrome.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/getreflect/reflect-chrome/issues"
+  },
+  "homepage": "https://github.com/getreflect/reflect-chrome#readme"
 }

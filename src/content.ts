@@ -300,6 +300,8 @@ function callBackgroundWithIntent(intent: string, url: string, whitelistTime: nu
         displayStatus(`got it! ${whitelistTime} minutes starting now.`, 3000, REFLECT_INFO)
         setTimeout(() => {
           hideOverlay()
+          // Reload the page to show the actual content
+          window.location.reload()
         }, 1000)
         break
 

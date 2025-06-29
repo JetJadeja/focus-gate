@@ -28,7 +28,7 @@ class BlobElement {
     this.r = r || 10
     this.element = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
 
-    this.fill = is3D ? 'url(#_r_gradient)' : '#A6B1CE'
+    this.fill = is3D ? 'url(#_r_gradient)' : 'rgba(255, 255, 255, 0.15)'
 
     // set styling
     this.element.setAttribute('r', this.r.toString())
@@ -69,16 +69,16 @@ export default class BlobAnimation {
   mouseY: number
 
   config: BlobConfig = {
-    blur: 8,
-    alphaMult: 30,
-    alphaAdd: -10,
-    numSeeds: 6,
-    childrenPerSeed: 4,
-    childrenDistanceRange: 125,
-    circleMinRadius: 15,
-    circleMaxRadius: 75,
-    attraction: 0.1,
-    repulsion: 1000,
+    blur: 20,
+    alphaMult: 18,
+    alphaAdd: -6,
+    numSeeds: 8,
+    childrenPerSeed: 3,
+    childrenDistanceRange: 150,
+    circleMinRadius: 20,
+    circleMaxRadius: 100,
+    attraction: 0.08,
+    repulsion: 1200,
   }
 
   constructor(is3D: boolean) {

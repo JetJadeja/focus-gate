@@ -83,7 +83,8 @@ export function logIntentToStorage(
   intentString: string,
   intentDate: Date,
   url: string,
-  accepted: string
+  accepted: string,
+  whitelistTime?: number
 ): void {
   getStorage().then((storage) => {
     let intentList: { [key: string]: Intent } = storage.intentList
@@ -108,6 +109,7 @@ export function logIntentToStorage(
       intent: intentString,
       url: url,
       accepted: accepted,
+      whitelistTime: whitelistTime,
     }
 
     // saving intentList to chrome storage

@@ -5,6 +5,7 @@ export interface Intent {
   intent: string
   url: string
   accepted?: string
+  whitelistTime?: number  // The time in minutes that was selected for this visit
 }
 
 export interface Storage {
@@ -15,6 +16,7 @@ export interface Storage {
 
   // lists
   blockedSites?: string[]
+  activeSites?: string[]  // Sites where reflect is currently active
   intentList?: { [key: string]: Intent }
   customMessage?: string
   whitelistedSites?: { [key: string]: string }
